@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     
-    <title>סולם בורג - מדד מאמץ</title>
+    <title>!סולם בורג - מדד מאמץ</title>
     <meta property="og:title" content="סולם בורג - אפליקציית מדד מאמץ">
     <meta property="og:description" content="אפליקציה אדפטבית למעקב ודירוג דרגות מאמץ בסולם בורג 6-20 וסולם 0-10.">
     <meta property="og:url" content="https://borg-rho.vercel.app/">
@@ -45,7 +45,6 @@
         
         .controls { display: flex; gap: 4px; align-items: center; }
         
-        /* עיצוב בחירת השפה */
         .lang-select {
             background: #ffffff; border: 1px solid #cbd5e1; padding: 3px 6px;
             font-size: 11px; font-weight: bold; border-radius: 6px; color: #1e293b;
@@ -95,7 +94,6 @@
         
         .scale-item.selected { border-color: #000; box-shadow: inset 0 0 4px rgba(0,0,0,0.2); }
 
-        /* תמיכה בכיווניות הטקסט לפי השפה */
         html[dir="rtl"] .score-container { margin-left: 6px; }
         html[dir="ltr"] .score-container { margin-right: 6px; }
 
@@ -198,7 +196,7 @@
         </div>
         <div class="modal-body" id="modalBody"></div>
         
-        <div class="credit-text">לאשתי באהבה amirpt ❤️</div>
+        <div class="credit-text">לאשתי באהבה Amirpt ❤️</div>
         
         <div class="modal-footer">
             <button class="btn btn-clear" id="btnClearHistory">נקה הכל</button>
@@ -208,7 +206,6 @@
 </div>
 
 <script>
-    // מאגר התרגומים המתוקפים קלינית
     const localization = {
         he: {
             dir: "rtl", history: "היסטוריה", clear: "נקה הכל", close: "סגור", saved: "✨ נשמר בהצלחה ✨", noData: "אין נתונים שמורים לסולם זה.", title620: "סולם בורג 6-20", title010: "סולם בורג 0-10", confirmClear: "האם למחוק את כל ההיסטוריה של סולם זה?",
@@ -232,7 +229,7 @@
         },
         am: {
             dir: "ltr", history: "ታሪክ", clear: "ሁሉንም አጥፋ", close: "ዝጋ", saved: "✨ በስኬት ተቀምጧል ✨", noData: "ምንም የተመዘገበ ታሪክ የለም::", title620: "የቦርግ መለኪያ 6-20", title010: "የቦርግ መለኪያ 0-10", confirmClear: "የዚህን መለኪያ ታሪክ በሙሉ ማጥፋት ይፈልጋሉ?",
-            scale620: { 6:"ምንም ድካም የለም", 7:"በጣም በጣም ቀላል", 8:"—", 9:"በጣም ቀላል", 10:"—", 11:"ቀላል", 12:"—", 13:"ትንሽ ከበድ ያለ", 14:"—", 15:"ከባድ", 16:"—", 17:"በጣም ከባድ", 18:"—", 19:"እጅግ በጣም ከባድ", 20:"ከፍተኛ ጥረት" },
+            scale620: { 6:"ምንም ድካም የለም", 7:"በጣም በጣም ቀላል", 8:"—", 9:"በጣም ቀላል", 10:"—", 11:"ቀላል", 12:"—", 13:"ትንሽ ከበድ ያለ", 14:"ከባድ", 16:"—", 17:"በጣም ከባድ", 18:"—", 19:"እጅግ በጣም ከባድ", 20:"ከፍተኛ ጥረት" },
             scale010: { 0:"ምንም የለም", 1:"በጣም አነስተኛ", 2:"ቀላል ድካም", 3:"መካከለኛ", 4:"ትንሽ ጠንከር ያለ", 5:"ከባድ/ጠንካራ", 6:"—", 7:"በጣም ከባድ", 8:"—", 9:"—", 10:"ከፍተኛ ጥረት" }
         }
     };
@@ -260,7 +257,6 @@
         document.getElementById('btnClearHistory').addEventListener('click', clearHistory);
     });
 
-    // בנייה דינמית של הסולמות לפי השפה הנבחרת
     function renderScales() {
         const langData = localization[currentLang];
         document.getElementById('htmlTag').setAttribute('dir', langData.dir);
@@ -270,7 +266,6 @@
         document.getElementById('tab620').innerText = langData.title620;
         document.getElementById('tab010').innerText = langData.title010;
 
-        // בניית סולם 6-20
         const container620 = document.getElementById('scale620');
         container620.innerHTML = '';
         const colors620 = { 6:'blue', 7:'blue', 8:'green', 9:'green', 10:'green', 11:'green', 12:'yellow', 13:'yellow', 14:'yellow', 15:'yellow', 16:'yellow', 17:'orange', 18:'orange', 19:'red', 20:'darkred' };
@@ -278,7 +273,6 @@
             container620.appendChild(createItemHTML(i, langData.scale620[i], colors620[i], '6-20'));
         }
 
-        // בניית סולם 0-10
         const container010 = document.getElementById('scale010');
         container010.innerHTML = '';
         const colors010 = { 0:'blue', 1:'green', 2:'green', 3:'yellow', 4:'yellow', 5:'orange', 6:'orange', 7:'red', 8:'red', 9:'red', 10:'darkred' };
@@ -373,5 +367,3 @@
 
 </body>
 </html>
-
-```
